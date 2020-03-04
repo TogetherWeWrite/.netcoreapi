@@ -1,0 +1,10 @@
+version: '3.3'
+services:
+  buildprocess:
+    build:
+      context: .
+      dockerfile: buildreact.Dockerfile
+    volumes:
+      - "/root/builds/react/individual:/build"
+    ports:
+      - "10203:80"

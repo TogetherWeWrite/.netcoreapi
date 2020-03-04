@@ -1,4 +1,4 @@
-﻿pipeline {
+pipeline {
     agent any
     options {
         disableConcurrentBuilds()
@@ -22,14 +22,18 @@
         }
         stage ("build") {
             steps {
-                sh "echo start build"
-                sh "docker-compose -f build"
-                sh "echo succesfull build"
+				dir("CDTestApi"){
+					sh "echo start build"
+					sh "docker-compose build"
+					sh "echo succesfull build"
+				}
             }
         }
         stage ("run") {
             steps {
-                sh "docker-compose up -d --force-recreate --remove-orphans"
+				dir("CDTestApi") {
+						sh "docker-compose up -d --force-recreate --remove-orphans"
+					}
             }
         }
 

@@ -1,6 +1,6 @@
 using System;
 
-namespace testapplication
+namespace CDTestApi
 {
     public class WeatherForecast
     {
